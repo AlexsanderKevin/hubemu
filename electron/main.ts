@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
+import { execa } from 'execa'
 
 // The built directory structure
 //
@@ -44,3 +45,6 @@ app.on('window-all-closed', () => {
 })
 
 app.whenReady().then(createWindow)
+
+execa('ls', { cwd: 'C:/Users/kjesus1'})
+  .then((result) => {console.log(result.stdout)})
