@@ -1,10 +1,15 @@
 import './App.css'
 
 function App() {
+  const sendRequest = () => {
+    window.api.invoke('list')
+      .then(list => console.log('resposta: ', list))
+      .catch(err => console.error(err))
+  }
 
   return (
     <>
-      <div>ala</div>
+      <button onClick={sendRequest}>Send</button>
     </>
   )
 }

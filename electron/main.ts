@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
 import { execa } from 'execa'
+import { ipcMain } from 'electron'
 
 // The built directory structure
 //
@@ -48,3 +49,12 @@ app.whenReady().then(createWindow)
 
 execa('ls', { cwd: 'C:/Users/kjesus1'})
   .then((result) => {console.log(result.stdout)})
+
+ipcMain.handle('list', async (event, args) => {
+  try {
+    return await execa('ls', { cwd: 'C:/Users/kjesus1'})
+  }
+  catch (err) {
+    throw new Error('Erro ao fazer requisição')
+  }
+})

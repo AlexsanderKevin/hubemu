@@ -1,3 +1,5 @@
+import { contextBridge, ipcRenderer } from "electron"
+
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise(resolve => {
     if (condition.includes(document.readyState)) {
@@ -79,6 +81,12 @@ function useLoading() {
     },
   }
 }
+
+contextBridge.exposeInMainWorld('api', {
+  invoke: async (channel, ...args) => {
+    return await ipcRenderer.invoke(channel, ...args)
+  }
+})
 
 // ----------------------------------------------------------------------
 
