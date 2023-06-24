@@ -52,7 +52,11 @@ execa('ls', { cwd: 'C:/Users/kjesus1'})
 
 ipcMain.handle('list', async (event, args) => {
   try {
-    return await execa('ls', { cwd: 'C:/Users/kjesus1'})
+    return await execa(
+      './pcsx2.exe --nogui --fullscreen "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso"',
+    {
+      cwd: 'D:/Emulador/Emuladores/PS2 - PCSX2'
+    })
   }
   catch (err) {
     throw new Error('Erro ao fazer requisição')
