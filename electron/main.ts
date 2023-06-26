@@ -47,16 +47,15 @@ app.on('window-all-closed', () => {
 
 app.whenReady().then(createWindow)
 
-execa('ls', { cwd: 'C:/Users/kjesus1'})
-  .then((result) => {console.log(result.stdout)})
+// execa('ls', { cwd: 'C:/Users/kjesus1'})
+//   .then((result) => {console.log(result.stdout)})
+
+const gamePath = './pcsx2.exe --nogui --fullscreen "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso"'
+const dirPath = 'D:/Emulador/Emuladores/PS2 - PCSX2'
 
 ipcMain.handle('list', async (event, args) => {
   try {
-    return await execa(
-      './pcsx2.exe --nogui --fullscreen "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso"',
-    {
-      cwd: 'D:/Emulador/Emuladores/PS2 - PCSX2'
-    })
+    return await execa( 'ls', { cwd: 'C:/Users/kjesus1' })
   }
   catch (err) {
     throw new Error('Erro ao fazer requisição')
