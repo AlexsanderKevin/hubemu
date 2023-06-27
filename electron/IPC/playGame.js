@@ -1,11 +1,11 @@
 import { execa } from "execa"
 
 const playGame = async (event, data) => {
-  const { dirPath, gamePath, exeCommand } = data
+  const { dirPath, gamePath, exeCommand } = data[0]
 
   try {
     return await execa(
-      `${exeCommand} ${gamePath}`, 
+      `${exeCommand} "${gamePath}"`, 
       {cwd: dirPath}
     )
   }
