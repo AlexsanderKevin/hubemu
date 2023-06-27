@@ -6,7 +6,11 @@ function App() {
   const sendRequest = async event => {
     event.target.disabled = true
     try {
-      const list = await window.api.invoke('list')
+      const list = await window.api.invoke('playGame', [
+        'dirPath',
+        'gamePath',
+        'exeCommand'
+      ])
       console.log(list)
       event.target.disabled = false
     }

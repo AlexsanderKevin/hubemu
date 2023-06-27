@@ -2,16 +2,9 @@ import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
 import { execa } from 'execa'
 import { ipcMain } from 'electron'
+import listFiles from './IPC/listFiles'
+import playGame from './IPC/playGame'
 
-// The built directory structure
-//
-// ├─┬─┬ dist
-// │ │ └── index.html
-// │ │
-// │ ├─┬ dist-electron
-// │ │ ├── main.js
-// │ │ └── preload.js
-// │
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
 
@@ -47,17 +40,5 @@ app.on('window-all-closed', () => {
 
 app.whenReady().then(createWindow)
 
-// execa('ls', { cwd: 'C:/Users/kjesus1'})
-//   .then((result) => {console.log(result.stdout)})
-
-const gamePath = './pcsx2.exe --nogui --fullscreen "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso"'
-const dirPath = 'D:/Emulador/Emuladores/PS2 - PCSX2'
-
-ipcMain.handle('list', async (event, args) => {
-  try {
-    return await execa( 'ls', { cwd: 'C:/Users/kjesus1' })
-  }
-  catch (err) {
-    throw new Error('Erro ao fazer requisição')
-  }
-})
+ipcMain.handle('list', listFiles)
+ipcMain.handle('playGame', playGame)
