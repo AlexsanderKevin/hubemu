@@ -1,5 +1,5 @@
 import './App.css'
-import { GamepadProvider } from './Gamepad'
+import { GamepadProvider } from './assets/Gamepad'
 import { useEffect } from 'react'
 
 function App() {
