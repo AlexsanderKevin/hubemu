@@ -11,7 +11,7 @@ export const GamepadProvider = ({children}) => {
   }
 
   const handleGamepadDisconnected = event => {
-    setGamepad(null)
+    setConnectedGamepad(null)
     console.log('Gamepad disconnected.')
   }
 

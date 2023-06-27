@@ -1,6 +1,5 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
-import { execa } from 'execa'
 import { ipcMain } from 'electron'
 import listFiles from './IPC/listFiles'
 import playGame from './IPC/playGame'

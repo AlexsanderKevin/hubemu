@@ -19,7 +19,7 @@ function App() {
 
   return (
     <GamepadProvider>
-      <button onClick={sendRequest} autoFocus>Send</button>
+      <button onClick={sendRequest} autoFocus>Kingdom Hearts</button>
     </GamepadProvider>
   )
 }
