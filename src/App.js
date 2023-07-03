@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const sendRequest = async event => {
+    event.target.disabled = true
+    try {
+      // const list = await window.api.invoke('playGame', [{
+      //   dirPath: 'D:/Emulador/Emuladores/PS2 - PCSX2',
+      //   gamePath: 'D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso',
+      //   exeCommand: './pcsx2.exe --nogui --fullscreen'
+      // }])
+      const list = await window.electron.invoke('list')
+      event.target.disabled = false
+    }
+    catch (err) { console.error(err) }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={sendRequest} autoFocus>Send</button>
     </div>
   );
 }
