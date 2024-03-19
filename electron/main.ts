@@ -1,16 +1,19 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
 import { ipcMain } from 'electron'
+import express from 'express'
 import listFiles from './IPC/listFiles'
 import playGame from './IPC/playGame'
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
 
-
 let win: BrowserWindow | null
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
+const expressApp = express()
+
+expressApp.listen(VITE_DEV_SERVER_URL, () => console.log('app running...'))
 
 function createWindow() {
   win = new BrowserWindow({
