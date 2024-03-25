@@ -4,3 +4,33 @@
   padding: 2rem;
   text-align: center;
 }
+
+.navigation-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+
+.navigation-container.horizontal {
+  flex-direction: row;
+}
+
+.navigation-container.vertical {
+  flex-direction: column;
+}
+
+.navigation-item {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.navigation-item:focus {
+  border: solid 3px white;
+}
+
+.navigation-item:active {
+  scale: .9;
+  transition: .2s;
+}
