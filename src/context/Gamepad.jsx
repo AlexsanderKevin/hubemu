@@ -68,12 +68,22 @@ export const GamepadProvider = ({children}) => {
 
   useEffect(() => {
     const container = document.querySelector(`[data-navigation-index="${containerIndex}"]`)
-    const item = container.querySelectorAll('.navigation-item')[activeItemIndex]
-    item.focus()
+    const newMaxItems = container.querySelectorAll('.navigation-item').length
 
-    setMaxItems(container.querySelectorAll('.navigation-item').length)
+    setMaxItems(newMaxItems)
     setMaxContainers(document.querySelectorAll('.navigation-container').length)
     setOrientation(container.getAttribute('data-orientation'))
+
+    let item
+    if (activeItemIndex >= newMaxItems) {
+      item = container.querySelectorAll('.navigation-item')[newMaxItems - 1]
+      setActiveItemIndex(newMaxItems - 1)
+    }
+    else {
+      item = container.querySelectorAll('.navigation-item')[activeItemIndex]
+    }
+    item.focus()
+
   }, [ containerIndex, activeItemIndex ])
 
   useEffect(() => {
