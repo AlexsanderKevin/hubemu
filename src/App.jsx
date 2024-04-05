@@ -1,4 +1,5 @@
 import './App.css'
+import Menu from './components/Menu/Menu'
 import { GamepadProvider } from './context/Gamepad'
 import { useEffect } from 'react'
 
@@ -19,7 +20,32 @@ function App() {
 
   return (
     <GamepadProvider>
-      <button onClick={sendRequest} autoFocus>Kingdom Hearts</button>
+      <div className='body'>
+        <Menu/>
+        <main>
+          <div data-navigation-index="0" data-orientation="horizontal" className='navigation-container horizontal'>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+          </div>
+
+          <div data-navigation-index="1" data-orientation="horizontal" className='navigation-container horizontal'>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item' onClick={sendRequest} >Kingdom Hearts</button>
+          </div>
+
+          <div data-navigation-index="2" data-orientation="horizontal" className='navigation-container horizontal'>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item'>item</button>
+            <button className='navigation-item' onClick={sendRequest} >Kingdom Hearts</button>
+          </div>
+        </main>
+      </div>
     </GamepadProvider>
   )
 }

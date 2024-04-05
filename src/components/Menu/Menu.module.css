@@ -1,0 +1,8 @@
+.menu {
+  background-color: black;
+  padding: 1.5rem;
+  height: 95dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
