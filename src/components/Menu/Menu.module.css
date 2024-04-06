@@ -4,5 +4,34 @@
   height: 95dvh;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+}
+
+.title {
+  margin-bottom: 3rem;
+  margin-top: 0;
+  font-size: 1.7rem;
+  width: 100%;
+  display: flex;
+  font-weight: normal;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLink {
+  display: flex;
+  font-weight: normal;
+  justify-content: start;
+  align-items: center;
+  gap: 1.7rem;
+  padding: 1rem 1.7rem;
+  min-width: 15rem;
+  font-size: 1.5rem;
+  background: none;
+}
+
+.navLink:focus {
+}
+
+.linkGroup {
+  margin-bottom: 4rem;
 }
