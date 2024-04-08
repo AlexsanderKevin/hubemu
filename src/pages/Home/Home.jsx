@@ -1,10 +1,11 @@
-import './App.css'
-import Menu from './components/Menu/Menu'
-import { GamepadProvider } from './context/Gamepad'
-import { useEffect } from 'react'
-import Home from './pages/Home/Home'
+import React from 'react';
+import ListFavorites from './components/ListFavorites';
+import { GamepadProvider } from '../../context/Gamepad';
+import ListRecents from './components/ListRecents';
+import styles from './Home.module.css'
 
-function App() {
+export default function Home () {
+
   const sendRequest = async event => {
     event.target.disabled = true
     try {
@@ -20,13 +21,9 @@ function App() {
   }
 
   return (
-    <GamepadProvider>
-      <div className='body'>
-        <Menu/>
-        <Home/>
-      </div>
-    </GamepadProvider>
+    <main className={styles.home}>
+      <ListRecents/>
+      <ListFavorites/>
+    </main>
   )
 }
-
-export default App
